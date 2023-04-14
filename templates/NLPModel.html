@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLP Evaluator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <style>
+        .container {
+            padding: 2em;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background: #333;
+            padding: 1em;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            width: 50%;
+            text-align: center;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>NLP Evaluator</h1>
+    </header>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/model_executor">Model Executor</a>
+    </nav>
+    <div class="container">
+        <form id="evaluationForm">
+            <label for="keywords">Keywords (comma-separated):</label>
+            <input type="text" id="keywords" name="keywords" required>
+            <label for="model_answer">Model Answer:</label>
+            <textarea id="model_answer" name="model_answer" rows="5" required></textarea>
+
+            <label for="student_answer">Student Answer (Text):</label>
+            <textarea id="student_answer" name="student_answer" rows="5"></textarea>
+
+            <label for="student_answer_image">Student Answer (Image):</label>
+            <input type="file" id="student_answer_image" name="student_answer_image" accept="image/*">
+
+            <input type="submit" value="Evaluate">
+        </form>
+        <div id="results">
+            <h3>Score: <span id="score"></span></h3>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("evaluationForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(e.target);
+            const response = await fetch("/model_executor", {
+                method: "POST",
+                body: formData,
+            });
+
+            const data = await response.json();
+            document.getElementById("score").textContent = data.score;
+        });
+    </script>
+</body>
+
+</html>

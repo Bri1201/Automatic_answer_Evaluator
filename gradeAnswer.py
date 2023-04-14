@@ -12,5 +12,6 @@ def grade_answer(keywords, model_answer, student_answer):
     if(sim2 < 0.5 and sim1 < 0.99):
         return 0
     total_marks = sim1*0.6 + sim2*0.4
+    print(total_marks)
     #Returns percentage marks
     return total_marks*10
