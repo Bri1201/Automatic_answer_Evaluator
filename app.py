@@ -23,7 +23,6 @@ def index():
         keywords = request.form.get("keywords").split(",")
         model_answer = request.form.get("model_answer")
         student_answer = request.form.get("student_answer")
-
         if "student_answer_image" in request.files:
             file = request.files["student_answer_image"]
             if file and allowed_file(file.filename):

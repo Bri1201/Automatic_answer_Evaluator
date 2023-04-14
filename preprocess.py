@@ -28,6 +28,7 @@ def get_wordnet_pos(treebank_tag):
 def preprocess_keys(keywords):
     
     keywords = [word.lower() for word in keywords]
+    keywords = [word.strip() for word in keywords]
      # Perform POS tagging to get the part of speech of each word
     tagged_tokens = pos_tag(keywords)
     
