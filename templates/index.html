@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLP Evaluator Homepage</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <style>
+        .container {
+            padding: 2em;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background: #333;
+            padding: 1em;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            width: 50%;
+            text-align: center;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>NLP Evaluator</h1>
+    </header>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/model_executor">Model Executor</a>
+    </nav>
+    <section class="container">
+        <h2>About the Model</h2>
+        <p>
+            The NLP Evaluator is an automatic code evaluator based on natural language processing (NLP) models. It
+            assesses the quality of student answers by comparing them to a model answer provided by an educator. The
+            evaluation is done based on the content, semantic similarity, and the presence of specified keywords.
+        </p>
+        <p>
+            The model uses state-of-the-art NLP techniques such as RoBERTa embeddings and transformer-based models for
+            semantic analysis. It incorporates the following features:
+        </p>
+        <ul>
+            <li>Preprocessing: Tokenization, stopword removal, lemmatization</li>
+            <li>Keyword matching and synonym detection</li>
+            <li>Text comparison: Semantic similarity and cosine similarity</li>
+            <li>OCR (Optical Character Recognition) for image inputs</li>
+        </ul>
+        <p>
+            The NLP Evaluator is designed to be user-friendly and can be easily integrated into web applications. Its
+            applications include grading student responses, assessing the quality of written content, and evaluating
+            answers in chatbots and customer service platforms.
+        </p>
+    </section>
+    <section class="container">
+        <h2>Future Scope</h2>
+        <ul>
+            <li>Handle entire answer sheet </li>
+            <li>Handle and evaluate multiple users in a friendly dashboard</li>
+            <li>Admin Panel for the institution</li>
+            <li>Access Management for the users, faculties, HOD and DEAN</li>
+            <li>This platform will be made availabe in subscription basis and take commission per user.</li>
+        </ul>
+    </section>
+    
+</body>
+
+</html>
