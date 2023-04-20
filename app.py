@@ -4,10 +4,11 @@ from PIL import Image
 from flask import Flask, render_template, request, jsonify
 from werkzeug.utils import secure_filename
 from gradeAnswer import grade_answer
+from getTextFromImage import detect_text
 
 app = Flask(__name__)
 
-app.config["UPLOAD_FOLDER"] = "uploads"
+app.config["UPLOAD_FOLDER"] = "./uploads"
 app.config["ALLOWED_EXTENSIONS"] = {"png", "jpg", "jpeg", "gif"}
 
 def allowed_file(filename):
@@ -29,7 +30,7 @@ def index():
                 filename = secure_filename(file.filename)
                 filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
                 file.save(filepath)
-                student_answer = pytesseract.image_to_string(Image.open(filepath))
+                student_answer = detect_text(filepath)
 
         score = grade_answer(keywords, model_answer, student_answer)
 
